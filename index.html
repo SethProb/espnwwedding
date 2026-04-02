@@ -953,57 +953,70 @@
 
 
 
-  /* ── WEB COMPONENT FORM WRAPPER ── */
+    /* ── WEB COMPONENT FORM WRAPPER ── */
   .form-webcomponent-wrap {
     background: rgba(0,0,0,0.3);
     border: 1px solid rgba(255,255,255,0.07);
     border-top: 4px solid var(--espn-red);
     padding: 32px;
+    overflow: hidden;
   }
 
-  /* ── PROBABILITY FORM OVERRIDES ── */
-
-  /* Force Sora on every element inside the component */
+  /* ── PROBABILITY FORM — FULL OVERRIDE ── */
+  /* Force Sora on everything in the component */
+  universal-form-webcomponent *,
   #universal-form-contain *,
-  #universal-form-contain *::before,
-  #universal-form-contain *::after {
+  #loader-form-input *,
+  #myForm * {
     font-family: 'Sora', sans-serif !important;
+    box-sizing: border-box !important;
   }
+
+  /* Fix hardcoded widths on container */
+  universal-form-webcomponent,
+  #universal-form-contain,
+  #universal-form-contain .form-universal,
+  #loader-form-input {
+    width: 100% !important;
+    max-width: 100% !important;
     background: transparent !important;
     padding: 0 !important;
-    width: 100% !important;
-    max-width: 100% !important;
   }
 
-  #universal-form-contain,
-  #universal-form-contain .form-universal {
+  /* 2-column grid on the form */
+  universal-form-webcomponent #myForm {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px 24px !important;
+    width: 100% !important;
+    max-width: 100% !important;
     background: transparent !important;
-    width: 100% !important;
-    max-width: 100% !important;
   }
 
-  /* Form */
-  #myForm {
-    background: transparent !important;
+  /* All direct children default 1 col */
+  universal-form-webcomponent #myForm > * {
+    grid-column: span 1 !important;
     width: 100% !important;
-    max-width: 100% !important;
+    min-width: 0 !important;
   }
 
-  /* All component wrappers */
-  #universal-form-contain component-text-email,
-  #universal-form-contain component-date,
-  #universal-form-contain component-textarea,
-  #universal-form-contain component-phone,
-  #universal-form-contain component-checkbox,
-  #universal-form-contain component-fingerprint {
-    display: block !important;
-    width: 100% !important;
-    margin-bottom: 16px !important;
+  /* First 4: first_name, last_name, dob, where_are_you_from — 2 col pairs */
+  universal-form-webcomponent #myForm > *:nth-child(1),
+  universal-form-webcomponent #myForm > *:nth-child(2),
+  universal-form-webcomponent #myForm > *:nth-child(3),
+  universal-form-webcomponent #myForm > *:nth-child(4) {
+    grid-column: span 1 !important;
   }
 
-  /* Labels — white, left-aligned */
-  #universal-form-contain .style-label,
-  #universal-form-contain label.style-label {
+  /* Email, phone, textarea, checkbox, everything after — full width */
+  universal-form-webcomponent #myForm > *:nth-child(n+5) {
+    grid-column: span 2 !important;
+  }
+
+  /* Labels — white, left-aligned, Sora */
+  universal-form-webcomponent .style-label,
+  universal-form-webcomponent label.style-label,
+  universal-form-webcomponent #myForm .style-label {
     font-family: 'Sora', sans-serif !important;
     font-size: 0.68rem !important;
     font-weight: 600 !important;
@@ -1011,76 +1024,86 @@
     text-transform: uppercase !important;
     color: rgba(255,255,255,0.9) !important;
     margin-bottom: 7px !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 6px !important;
     text-align: left !important;
-    justify-content: flex-start !important;
+    display: block !important;
+    width: 100% !important;
   }
 
-  #universal-form-contain .asterisk {
+  universal-form-webcomponent .asterisk {
     color: var(--espn-red) !important;
-    font-size: 0.7rem !important;
   }
 
-  /* Inputs */
-  #universal-form-contain .style-input,
-  #universal-form-contain input.style-input,
-  #universal-form-contain textarea.style-input {
+  /* Inputs — full width, dark, site style */
+  universal-form-webcomponent .style-input,
+  universal-form-webcomponent input.style-input,
+  universal-form-webcomponent textarea.style-input,
+  universal-form-webcomponent #myForm input,
+  universal-form-webcomponent #myForm textarea {
     font-family: 'Sora', sans-serif !important;
-    font-size: 0.92rem !important;
+    font-size: 0.9rem !important;
     font-weight: 400 !important;
     background-color: rgba(255,255,255,0.05) !important;
-    border: 1px solid rgba(255,255,255,0.1) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
     border-radius: 2px !important;
-    color: var(--white) !important;
+    color: #fff !important;
     padding: 11px 14px !important;
     width: 100% !important;
-    height: auto !important;
-    min-height: 44px !important;
-    box-sizing: border-box !important;
+    min-width: 0 !important;
+    height: 44px !important;
+    display: block !important;
     transition: border-color 0.2s !important;
-    -webkit-appearance: none !important;
   }
 
-  #universal-form-contain .style-input:focus,
-  #universal-form-contain input.style-input:focus,
-  #universal-form-contain textarea.style-input:focus {
+  universal-form-webcomponent textarea.style-input,
+  universal-form-webcomponent #myForm textarea {
+    height: 100px !important;
+    resize: vertical !important;
+  }
+
+  universal-form-webcomponent .style-input:focus,
+  universal-form-webcomponent input.style-input:focus {
     border-color: var(--espn-red) !important;
     outline: none !important;
     background-color: rgba(255,255,255,0.07) !important;
   }
 
-  /* Placeholder text */
-  #universal-form-contain .style-input::placeholder {
+  universal-form-webcomponent .style-input::placeholder,
+  universal-form-webcomponent input::placeholder,
+  universal-form-webcomponent textarea::placeholder {
     color: rgba(255,255,255,0.2) !important;
-    font-family: 'Sora', sans-serif !important;
   }
 
-  /* Icon inside input */
-  #universal-form-contain .icon-input {
+  /* Hide validation icons inside inputs */
+  universal-form-webcomponent .icon-input,
+  universal-form-webcomponent img.icon-input {
     display: none !important;
   }
 
   /* Error text */
-  #universal-form-contain span.error {
+  universal-form-webcomponent span.error,
+  universal-form-webcomponent .error {
     font-family: 'Sora', sans-serif !important;
     font-size: 0.7rem !important;
     font-weight: 400 !important;
-    color: rgba(255, 80, 80, 0.9) !important;
+    color: rgba(255,80,80,0.9) !important;
+    text-align: left !important;
     margin-top: 4px !important;
     display: block !important;
+    letter-spacing: 0.02em !important;
   }
 
   /* Checkbox row */
-  #universal-form-contain component-checkbox {
-    margin-top: 4px !important;
-    margin-bottom: 20px !important;
+  universal-form-webcomponent component-checkbox,
+  universal-form-webcomponent #myForm component-checkbox {
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
   }
 
-  #universal-form-contain input[type="checkbox"] {
+  universal-form-webcomponent input[type="checkbox"] {
     width: 16px !important;
     height: 16px !important;
+    min-width: 16px !important;
     border: 1px solid rgba(255,255,255,0.25) !important;
     background: rgba(255,255,255,0.04) !important;
     border-radius: 2px !important;
@@ -1088,16 +1111,18 @@
     flex-shrink: 0 !important;
   }
 
-  #universal-form-contain .text-description-2,
-  #universal-form-contain p.text-description-2 {
+  universal-form-webcomponent p.text-description-2,
+  universal-form-webcomponent .text-description-2 {
     font-family: 'Sora', sans-serif !important;
     font-size: 0.88rem !important;
     font-weight: 400 !important;
-    color: rgba(255,255,255,0.55) !important;
+    color: rgba(255,255,255,0.6) !important;
     line-height: 1.5 !important;
+    text-align: left !important;
   }
 
-  #universal-form-contain .text-description-2 a {
+  universal-form-webcomponent p.text-description-2 a,
+  universal-form-webcomponent .text-description-2 a {
     color: var(--espn-red) !important;
     text-decoration: underline !important;
     text-underline-offset: 2px !important;
@@ -1105,108 +1130,63 @@
   }
 
   /* Submit button */
-  #btn-next {
+  universal-form-webcomponent #btn-next,
+  universal-form-webcomponent button#btn-next {
     font-family: 'Sora', sans-serif !important;
     font-size: 1rem !important;
     font-weight: 700 !important;
     letter-spacing: 0.1em !important;
     text-transform: uppercase !important;
     background: var(--espn-red) !important;
-    color: var(--white) !important;
+    background-color: var(--espn-red) !important;
+    color: #fff !important;
     border: none !important;
     border-radius: 0 !important;
-    padding: 16px 52px !important;
+    padding: 14px 48px !important;
     width: auto !important;
+    min-width: 0 !important;
     display: inline-block !important;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important;
     cursor: pointer !important;
     transition: background 0.2s !important;
-    margin-top: 4px !important;
+    margin-top: 8px !important;
+    text-align: center !important;
   }
 
-  #btn-next:hover {
+  universal-form-webcomponent #btn-next:hover {
     background: #91080A !important;
+    background-color: #91080A !important;
   }
 
-  /* Disclaimer text */
-  #universal-form-contain p.text-disclaimer {
+  /* Disclaimer / legal text */
+  universal-form-webcomponent p.text-disclaimer,
+  universal-form-webcomponent .text-disclaimer {
     font-family: 'Sora', sans-serif !important;
-    font-size: 0.7rem !important;
+    font-size: 0.68rem !important;
     font-weight: 300 !important;
     color: rgba(255,255,255,0.25) !important;
-    margin-top: 14px !important;
+    margin-top: 12px !important;
     line-height: 1.7 !important;
+    text-align: left !important;
   }
 
-  /* H1 title if shown */
-  #universal-form-contain h1 {
-    font-family: 'Sora', sans-serif !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.04em !important;
-    text-transform: uppercase !important;
-    color: var(--white) !important;
-    margin-bottom: 8px !important;
+  /* Hide canvas fingerprint */
+  universal-form-webcomponent canvas,
+  universal-form-webcomponent component-fingerprint {
+    display: none !important;
   }
 
-  #universal-form-contain p.description {
-    font-family: 'Sora', sans-serif !important;
-    font-size: 0.88rem !important;
-    font-weight: 300 !important;
-    color: rgba(255,255,255,0.5) !important;
-    margin-bottom: 20px !important;
-    line-height: 1.6 !important;
-  }
-
-
-  /* ── 2-COLUMN FORM LAYOUT ── */
-  #myForm {
-    display: grid !important;
-    grid-template-columns: 1fr 1fr !important;
-    gap: 16px 20px !important;
-    align-items: start !important;
-  }
-
-  /* First 4 fields: First Name, Last Name, DOB, Where Are You From — 2 col pairs */
-  #myForm > *:nth-child(1),
-  #myForm > *:nth-child(2),
-  #myForm > *:nth-child(3),
-  #myForm > *:nth-child(4) {
-    grid-column: span 1 !important;
-  }
-
-  /* Email, Phone, Textarea, Checkbox, div, p, br, button — full width */
-  #myForm > *:nth-child(5),
-  #myForm > *:nth-child(6),
-  #myForm > *:nth-child(7),
-  #myForm > *:nth-child(8),
-  #myForm > *:nth-child(9),
-  #myForm > *:nth-child(10),
-  #myForm > *:nth-child(11),
-  #myForm > *:nth-child(12),
-  #myForm > *:nth-child(13) {
-    grid-column: span 2 !important;
-  }
-
-  /* Button left-aligned */
-  #btn-next {
-    justify-self: start !important;
-  }
-
-  /* Hide canvas/fingerprint */
-  component-fingerprint { display: none !important; }
-
-  /* Responsive — single col on mobile */
+  /* Responsive */
   @media (max-width: 600px) {
-    #myForm {
+    universal-form-webcomponent #myForm {
       grid-template-columns: 1fr !important;
     }
-    #myForm > * {
+    universal-form-webcomponent #myForm > * {
       grid-column: span 1 !important;
     }
   }
 
-  /* ── FOOTER ── */
+/* ── FOOTER ── */
   footer {
     background: #080808;
     border-top: 1px solid rgba(255,255,255,0.06);
@@ -1497,7 +1477,37 @@
 
 
 <script>
-  const hamburger = document.getElementById('hamburger');
+  /* Inject late-binding styles after component CSS loads */
+  const injectFormStyles = () => {
+    if (document.getElementById('wc-override-styles')) return;
+    const style = document.createElement('style');
+    style.id = 'wc-override-styles';
+    style.textContent = `
+      #myForm { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 24px !important; width: 100% !important; max-width: 100% !important; }
+      #myForm > * { min-width: 0 !important; }
+      #myForm > *:nth-child(1), #myForm > *:nth-child(2), #myForm > *:nth-child(3), #myForm > *:nth-child(4) { grid-column: span 1 !important; }
+      #myForm > *:nth-child(n+5) { grid-column: span 2 !important; }
+      #loader-form-input, #universal-form-contain, .form-universal { width: 100% !important; max-width: 100% !important; background: transparent !important; }
+      .style-label, label.style-label { font-family: 'Sora', sans-serif !important; font-size: 0.68rem !important; font-weight: 600 !important; letter-spacing: 0.14em !important; text-transform: uppercase !important; color: rgba(255,255,255,0.9) !important; text-align: left !important; display: block !important; width: 100% !important; margin-bottom: 7px !important; }
+      .style-input, input.style-input, textarea.style-input { font-family: 'Sora', sans-serif !important; font-size: 0.9rem !important; background-color: rgba(255,255,255,0.05) !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 2px !important; color: #fff !important; padding: 11px 14px !important; width: 100% !important; min-width: 0 !important; height: 44px !important; }
+      textarea.style-input { height: 100px !important; }
+      .style-input:focus { border-color: #F51825 !important; outline: none !important; }
+      .icon-input, img.icon-input { display: none !important; }
+      span.error { font-family: 'Sora', sans-serif !important; font-size: 0.7rem !important; color: rgba(255,80,80,0.9) !important; text-align: left !important; display: block !important; }
+      p.text-description-2 { font-family: 'Sora', sans-serif !important; font-size: 0.88rem !important; color: rgba(255,255,255,0.6) !important; text-align: left !important; }
+      p.text-description-2 a { color: #F51825 !important; text-decoration: underline !important; font-weight: 600 !important; }
+      p.text-disclaimer { font-family: 'Sora', sans-serif !important; font-size: 0.68rem !important; color: rgba(255,255,255,0.25) !important; text-align: left !important; }
+      #btn-next { font-family: 'Sora', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: #F51825 !important; color: #fff !important; border: none !important; border-radius: 0 !important; padding: 14px 48px !important; width: auto !important; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important; cursor: pointer !important; }
+      #btn-next:hover { background: #91080A !important; }
+      canvas, component-fingerprint { display: none !important; }
+    `;
+    document.head.appendChild(style);
+  };
+  // Run on load and after a delay to catch async component render
+  window.addEventListener('load', injectFormStyles);
+  setTimeout(injectFormStyles, 500);
+  setTimeout(injectFormStyles, 1500);
+
   const nav = document.getElementById('header-nav');
 
   hamburger.addEventListener('click', () => {
