@@ -963,8 +963,12 @@
 
   /* ── PROBABILITY FORM OVERRIDES ── */
 
-  /* Container */
-  #loader-form-input {
+  /* Force Sora on every element inside the component */
+  #universal-form-contain *,
+  #universal-form-contain *::before,
+  #universal-form-contain *::after {
+    font-family: 'Sora', sans-serif !important;
+  }
     background: transparent !important;
     padding: 0 !important;
     width: 100% !important;
@@ -997,7 +1001,7 @@
     margin-bottom: 16px !important;
   }
 
-  /* Labels */
+  /* Labels — white, left-aligned */
   #universal-form-contain .style-label,
   #universal-form-contain label.style-label {
     font-family: 'Sora', sans-serif !important;
@@ -1005,11 +1009,13 @@
     font-weight: 600 !important;
     letter-spacing: 0.14em !important;
     text-transform: uppercase !important;
-    color: rgba(255,255,255,0.5) !important;
+    color: rgba(255,255,255,0.9) !important;
     margin-bottom: 7px !important;
     display: flex !important;
     align-items: center !important;
     gap: 6px !important;
+    text-align: left !important;
+    justify-content: flex-start !important;
   }
 
   #universal-form-contain .asterisk {
@@ -1150,6 +1156,54 @@
     color: rgba(255,255,255,0.5) !important;
     margin-bottom: 20px !important;
     line-height: 1.6 !important;
+  }
+
+
+  /* ── 2-COLUMN FORM LAYOUT ── */
+  #myForm {
+    display: grid !important;
+    grid-template-columns: 1fr 1fr !important;
+    gap: 16px 20px !important;
+    align-items: start !important;
+  }
+
+  /* First 4 fields: First Name, Last Name, DOB, Where Are You From — 2 col pairs */
+  #myForm > *:nth-child(1),
+  #myForm > *:nth-child(2),
+  #myForm > *:nth-child(3),
+  #myForm > *:nth-child(4) {
+    grid-column: span 1 !important;
+  }
+
+  /* Email, Phone, Textarea, Checkbox, div, p, br, button — full width */
+  #myForm > *:nth-child(5),
+  #myForm > *:nth-child(6),
+  #myForm > *:nth-child(7),
+  #myForm > *:nth-child(8),
+  #myForm > *:nth-child(9),
+  #myForm > *:nth-child(10),
+  #myForm > *:nth-child(11),
+  #myForm > *:nth-child(12),
+  #myForm > *:nth-child(13) {
+    grid-column: span 2 !important;
+  }
+
+  /* Button left-aligned */
+  #btn-next {
+    justify-self: start !important;
+  }
+
+  /* Hide canvas/fingerprint */
+  component-fingerprint { display: none !important; }
+
+  /* Responsive — single col on mobile */
+  @media (max-width: 600px) {
+    #myForm {
+      grid-template-columns: 1fr !important;
+    }
+    #myForm > * {
+      grid-column: span 1 !important;
+    }
   }
 
   /* ── FOOTER ── */
