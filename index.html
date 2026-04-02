@@ -961,24 +961,124 @@
     padding: 32px;
   }
 
-  /* Override web component styles via CSS custom properties */
-  universal-form-webcomponent {
-    --primary-color: #F51825;
-    --primary-hover-color: #91080A;
-    --background-color: transparent;
-    --input-background: rgba(255,255,255,0.04);
-    --input-border-color: rgba(255,255,255,0.12);
-    --input-border-radius: 2px;
-    --input-color: #ffffff;
-    --label-color: rgba(255,255,255,0.5);
-    --text-color: #ffffff;
-    --font-family: 'Sora', sans-serif;
-    --button-background: #F51825;
-    --button-color: #ffffff;
-    --button-border-radius: 2px;
-    --error-color: #ff4444;
-    display: block;
-    color-scheme: dark;
+  /* ── PROBABILITY FORM OVERRIDES ── */
+
+  /* Container */
+  #loader-form-input {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  #universal-form-contain .form-universal {
+    background: transparent !important;
+    padding: 0 !important;
+  }
+
+  /* Title / description */
+  #universal-form-contain h1 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.06em !important;
+    text-transform: uppercase !important;
+    color: var(--white) !important;
+    margin-bottom: 8px !important;
+  }
+
+  #universal-form-contain p.description {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.85rem !important;
+    font-weight: 300 !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin-bottom: 20px !important;
+  }
+
+  /* Form */
+  #myForm {
+    background: transparent !important;
+    font-family: 'Sora', sans-serif !important;
+  }
+
+  /* Labels */
+  #universal-form-contain .style-label {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.68rem !important;
+    font-weight: 600 !important;
+    letter-spacing: 0.14em !important;
+    text-transform: uppercase !important;
+    color: rgba(255,255,255,0.45) !important;
+    margin-bottom: 6px !important;
+  }
+
+  /* Inputs */
+  #universal-form-contain .style-input {
+    font-family: 'Sora', sans-serif !important;
+    background-color: rgba(255,255,255,0.04) !important;
+    border: 1px solid rgba(255,255,255,0.12) !important;
+    border-radius: 2px !important;
+    color: var(--white) !important;
+    font-size: 0.9rem !important;
+    padding: 10px 14px !important;
+    width: 100% !important;
+    transition: border-color 0.2s !important;
+  }
+
+  #universal-form-contain .style-input:focus {
+    border-color: var(--espn-red) !important;
+    outline: none !important;
+    background-color: rgba(255,255,255,0.06) !important;
+  }
+
+  /* Error states */
+  #universal-form-contain .style-input.error,
+  #universal-form-contain .style-input[class*="error"] {
+    border-color: rgba(255, 68, 68, 0.6) !important;
+  }
+
+  #universal-form-contain span.error {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.7rem !important;
+    color: rgba(255, 80, 80, 0.9) !important;
+  }
+
+  /* Submit button */
+  #btn-next {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    background: var(--espn-red) !important;
+    color: var(--white) !important;
+    border: none !important;
+    border-radius: 0 !important;
+    padding: 16px 52px !important;
+    clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important;
+    cursor: pointer !important;
+    transition: background 0.2s !important;
+    margin-top: 8px !important;
+  }
+
+  #btn-next:hover {
+    background: #91080A !important;
+  }
+
+  /* Disclaimer text */
+  #universal-form-contain p.text-disclaimer {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.7rem !important;
+    font-weight: 300 !important;
+    color: rgba(255,255,255,0.25) !important;
+    margin-top: 12px !important;
+    line-height: 1.6 !important;
+  }
+
+  #universal-form-contain p.text-description-2 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.82rem !important;
+    font-weight: 300 !important;
+    color: rgba(255,255,255,0.45) !important;
+    margin-bottom: 16px !important;
   }
 
   /* ── FOOTER ── */
