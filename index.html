@@ -967,78 +967,135 @@
   #loader-form-input {
     background: transparent !important;
     padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
+  #universal-form-contain,
   #universal-form-contain .form-universal {
     background: transparent !important;
-    padding: 0 !important;
-  }
-
-  /* Title / description */
-  #universal-form-contain h1 {
-    font-family: 'Sora', sans-serif !important;
-    font-size: 1rem !important;
-    font-weight: 700 !important;
-    letter-spacing: 0.06em !important;
-    text-transform: uppercase !important;
-    color: var(--white) !important;
-    margin-bottom: 8px !important;
-  }
-
-  #universal-form-contain p.description {
-    font-family: 'Sora', sans-serif !important;
-    font-size: 0.85rem !important;
-    font-weight: 300 !important;
-    color: rgba(255,255,255,0.5) !important;
-    margin-bottom: 20px !important;
+    width: 100% !important;
+    max-width: 100% !important;
   }
 
   /* Form */
   #myForm {
     background: transparent !important;
-    font-family: 'Sora', sans-serif !important;
+    width: 100% !important;
+    max-width: 100% !important;
+  }
+
+  /* All component wrappers */
+  #universal-form-contain component-text-email,
+  #universal-form-contain component-date,
+  #universal-form-contain component-textarea,
+  #universal-form-contain component-phone,
+  #universal-form-contain component-checkbox,
+  #universal-form-contain component-fingerprint {
+    display: block !important;
+    width: 100% !important;
+    margin-bottom: 16px !important;
   }
 
   /* Labels */
-  #universal-form-contain .style-label {
+  #universal-form-contain .style-label,
+  #universal-form-contain label.style-label {
     font-family: 'Sora', sans-serif !important;
     font-size: 0.68rem !important;
     font-weight: 600 !important;
     letter-spacing: 0.14em !important;
     text-transform: uppercase !important;
-    color: rgba(255,255,255,0.45) !important;
-    margin-bottom: 6px !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin-bottom: 7px !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 6px !important;
+  }
+
+  #universal-form-contain .asterisk {
+    color: var(--espn-red) !important;
+    font-size: 0.7rem !important;
   }
 
   /* Inputs */
-  #universal-form-contain .style-input {
+  #universal-form-contain .style-input,
+  #universal-form-contain input.style-input,
+  #universal-form-contain textarea.style-input {
     font-family: 'Sora', sans-serif !important;
-    background-color: rgba(255,255,255,0.04) !important;
-    border: 1px solid rgba(255,255,255,0.12) !important;
+    font-size: 0.92rem !important;
+    font-weight: 400 !important;
+    background-color: rgba(255,255,255,0.05) !important;
+    border: 1px solid rgba(255,255,255,0.1) !important;
     border-radius: 2px !important;
     color: var(--white) !important;
-    font-size: 0.9rem !important;
-    padding: 10px 14px !important;
+    padding: 11px 14px !important;
     width: 100% !important;
+    height: auto !important;
+    min-height: 44px !important;
+    box-sizing: border-box !important;
     transition: border-color 0.2s !important;
+    -webkit-appearance: none !important;
   }
 
-  #universal-form-contain .style-input:focus {
+  #universal-form-contain .style-input:focus,
+  #universal-form-contain input.style-input:focus,
+  #universal-form-contain textarea.style-input:focus {
     border-color: var(--espn-red) !important;
     outline: none !important;
-    background-color: rgba(255,255,255,0.06) !important;
+    background-color: rgba(255,255,255,0.07) !important;
   }
 
-  /* Error states */
-  #universal-form-contain .style-input.error,
-  #universal-form-contain .style-input[class*="error"] {
-    border-color: rgba(255, 68, 68, 0.6) !important;
+  /* Placeholder text */
+  #universal-form-contain .style-input::placeholder {
+    color: rgba(255,255,255,0.2) !important;
+    font-family: 'Sora', sans-serif !important;
   }
 
+  /* Icon inside input */
+  #universal-form-contain .icon-input {
+    display: none !important;
+  }
+
+  /* Error text */
   #universal-form-contain span.error {
     font-family: 'Sora', sans-serif !important;
     font-size: 0.7rem !important;
+    font-weight: 400 !important;
     color: rgba(255, 80, 80, 0.9) !important;
+    margin-top: 4px !important;
+    display: block !important;
+  }
+
+  /* Checkbox row */
+  #universal-form-contain component-checkbox {
+    margin-top: 4px !important;
+    margin-bottom: 20px !important;
+  }
+
+  #universal-form-contain input[type="checkbox"] {
+    width: 16px !important;
+    height: 16px !important;
+    border: 1px solid rgba(255,255,255,0.25) !important;
+    background: rgba(255,255,255,0.04) !important;
+    border-radius: 2px !important;
+    accent-color: var(--espn-red) !important;
+    flex-shrink: 0 !important;
+  }
+
+  #universal-form-contain .text-description-2,
+  #universal-form-contain p.text-description-2 {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.88rem !important;
+    font-weight: 400 !important;
+    color: rgba(255,255,255,0.55) !important;
+    line-height: 1.5 !important;
+  }
+
+  #universal-form-contain .text-description-2 a {
+    color: var(--espn-red) !important;
+    text-decoration: underline !important;
+    text-underline-offset: 2px !important;
+    font-weight: 600 !important;
   }
 
   /* Submit button */
@@ -1053,10 +1110,12 @@
     border: none !important;
     border-radius: 0 !important;
     padding: 16px 52px !important;
+    width: auto !important;
+    display: inline-block !important;
     clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important;
     cursor: pointer !important;
     transition: background 0.2s !important;
-    margin-top: 8px !important;
+    margin-top: 4px !important;
   }
 
   #btn-next:hover {
@@ -1069,16 +1128,28 @@
     font-size: 0.7rem !important;
     font-weight: 300 !important;
     color: rgba(255,255,255,0.25) !important;
-    margin-top: 12px !important;
-    line-height: 1.6 !important;
+    margin-top: 14px !important;
+    line-height: 1.7 !important;
   }
 
-  #universal-form-contain p.text-description-2 {
+  /* H1 title if shown */
+  #universal-form-contain h1 {
     font-family: 'Sora', sans-serif !important;
-    font-size: 0.82rem !important;
+    font-size: 1rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.04em !important;
+    text-transform: uppercase !important;
+    color: var(--white) !important;
+    margin-bottom: 8px !important;
+  }
+
+  #universal-form-contain p.description {
+    font-family: 'Sora', sans-serif !important;
+    font-size: 0.88rem !important;
     font-weight: 300 !important;
-    color: rgba(255,255,255,0.45) !important;
-    margin-bottom: 16px !important;
+    color: rgba(255,255,255,0.5) !important;
+    margin-bottom: 20px !important;
+    line-height: 1.6 !important;
   }
 
   /* ── FOOTER ── */
