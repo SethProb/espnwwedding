@@ -182,8 +182,7 @@
 
   @media (max-width: 600px) {
     .nav-link { display: none; }
-    .nav-cta { display: none; }
-    .header-nav { gap: 0; }
+    .header-nav { gap: 12px; }
     .nav-wwe-logo { height: 24px; }
     .nav-espn-logo { height: 16px; }
     .header-logo-divider { height: 18px; }
@@ -1692,6 +1691,12 @@
       #btn-next { font-family: 'Sora', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: #F51825 !important; color: #fff !important; border: none !important; border-radius: 0 !important; padding: 14px 48px !important; width: auto !important; min-width: 0 !important; display: inline-block !important; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important; cursor: pointer !important; }
       #btn-next:hover { background: #91080A !important; }
       canvas, component-fingerprint { display: none !important; }
+      #date_of_birth::-webkit-calendar-picker-indicator { filter: invert(1) !important; cursor: pointer !important; opacity: 0.7 !important; }
+      #myForm { gap: 6px 20px !important; }
+      #myForm > * { margin-bottom: 0 !important; }
+      input[type="checkbox"] { accent-color: #F51825 !important; width: 18px !important; height: 18px !important; min-width: 18px !important; cursor: pointer !important; }
+      .checkbox.default { display: flex !important; align-items: flex-start !important; gap: 10px !important; }
+      @media (max-width: 600px) { #myForm { grid-template-columns: 1fr !important; gap: 6px !important; } #myForm > * { grid-column: span 1 !important; } }
 
     `;
     document.head.appendChild(style);
