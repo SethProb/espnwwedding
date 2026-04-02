@@ -1482,8 +1482,8 @@
     const style = document.createElement('style');
     style.id = 'wc-override-styles';
     style.textContent = `
-      #myForm { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 16px 24px !important; width: 100% !important; max-width: 100% !important; }
-      #myForm > * { min-width: 0 !important; }
+      #myForm { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px 20px !important; width: 100% !important; max-width: 100% !important; }
+      #myForm > * { min-width: 0 !important; margin-bottom: 0 !important; }
       #myForm > *:nth-child(1), #myForm > *:nth-child(2), #myForm > *:nth-child(3), #myForm > *:nth-child(4) { grid-column: span 1 !important; }
       #myForm > *:nth-child(n+5) { grid-column: span 2 !important; }
       #loader-form-input, #universal-form-contain, .form-universal { width: 100% !important; max-width: 100% !important; background: transparent !important; }
@@ -1491,14 +1491,16 @@
       .style-input, input.style-input, textarea.style-input { font-family: 'Sora', sans-serif !important; font-size: 0.9rem !important; background-color: rgba(255,255,255,0.05) !important; border: 1px solid rgba(255,255,255,0.12) !important; border-radius: 2px !important; color: #fff !important; padding: 11px 14px !important; width: 100% !important; min-width: 0 !important; height: 44px !important; }
       textarea.style-input { height: 100px !important; }
       .style-input:focus { border-color: #F51825 !important; outline: none !important; }
-      .icon-input, img.icon-input { display: none !important; }
+      .icon-input, img.icon-input, [id^="icon-success"], [class*="icon-input"] { display: none !important; visibility: hidden !important; width: 0 !important; height: 0 !important; }
       span.error { font-family: 'Sora', sans-serif !important; font-size: 0.7rem !important; color: rgba(255,80,80,0.9) !important; text-align: left !important; margin-top: 4px !important; }
+      component-checkbox { display: flex !important; align-items: flex-start !important; gap: 10px !important; }
       p.text-description-2 { font-family: 'Sora', sans-serif !important; font-size: 0.88rem !important; color: rgba(255,255,255,0.6) !important; text-align: left !important; }
       p.text-description-2 a { color: #F51825 !important; text-decoration: underline !important; font-weight: 600 !important; }
       p.text-disclaimer { font-family: 'Sora', sans-serif !important; font-size: 0.68rem !important; color: rgba(255,255,255,0.25) !important; text-align: left !important; }
-      #btn-next { font-family: 'Sora', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: #F51825 !important; color: #fff !important; border: none !important; border-radius: 0 !important; padding: 14px 48px !important; width: auto !important; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important; cursor: pointer !important; }
+      #btn-next { font-family: 'Sora', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: #F51825 !important; color: #fff !important; border: none !important; border-radius: 0 !important; padding: 14px 48px !important; width: auto !important; min-width: 0 !important; display: inline-block !important; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important; cursor: pointer !important; }
       #btn-next:hover { background: #91080A !important; }
       canvas, component-fingerprint { display: none !important; }
+      @media (max-width: 600px) { #myForm { grid-template-columns: 1fr !important; } #myForm > * { grid-column: span 1 !important; } }
     `;
     document.head.appendChild(style);
   };
