@@ -1500,14 +1500,27 @@
       #btn-next { font-family: 'Sora', sans-serif !important; font-size: 1rem !important; font-weight: 700 !important; letter-spacing: 0.1em !important; text-transform: uppercase !important; background: #F51825 !important; color: #fff !important; border: none !important; border-radius: 0 !important; padding: 14px 48px !important; width: auto !important; min-width: 0 !important; display: inline-block !important; clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 100%, 12px 100%) !important; cursor: pointer !important; }
       #btn-next:hover { background: #91080A !important; }
       canvas, component-fingerprint { display: none !important; }
-      @media (max-width: 600px) { #myForm { grid-template-columns: 1fr !important; } #myForm > * { grid-column: span 1 !important; } }
+
     `;
     document.head.appendChild(style);
   };
+  // Apply mobile single-column layout
+  const applyMobileForm = () => {
+    const form = document.querySelector('#myForm');
+    if (!form) return;
+    if (window.innerWidth <= 600) {
+      form.style.setProperty('grid-template-columns', '1fr', 'important');
+      Array.from(form.children).forEach(el => el.style.setProperty('grid-column', 'span 1', 'important'));
+    } else {
+      form.style.setProperty('grid-template-columns', '1fr 1fr', 'important');
+    }
+  };
+
   // Run on load and after a delay to catch async component render
-  window.addEventListener('load', injectFormStyles);
-  setTimeout(injectFormStyles, 500);
-  setTimeout(injectFormStyles, 1500);
+  window.addEventListener('load', () => { injectFormStyles(); applyMobileForm(); });
+  window.addEventListener('resize', applyMobileForm);
+  setTimeout(() => { injectFormStyles(); applyMobileForm(); }, 500);
+  setTimeout(() => { injectFormStyles(); applyMobileForm(); }, 1500);
 
   const nav = document.getElementById('header-nav');
 
