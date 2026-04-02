@@ -952,6 +952,35 @@
 
 
 
+
+  /* ── WEB COMPONENT FORM WRAPPER ── */
+  .form-webcomponent-wrap {
+    background: rgba(0,0,0,0.3);
+    border: 1px solid rgba(255,255,255,0.07);
+    border-top: 4px solid var(--espn-red);
+    padding: 32px;
+  }
+
+  /* Override web component styles via CSS custom properties */
+  universal-form-webcomponent {
+    --primary-color: #F51825;
+    --primary-hover-color: #91080A;
+    --background-color: transparent;
+    --input-background: rgba(255,255,255,0.04);
+    --input-border-color: rgba(255,255,255,0.12);
+    --input-border-radius: 2px;
+    --input-color: #ffffff;
+    --label-color: rgba(255,255,255,0.5);
+    --text-color: #ffffff;
+    --font-family: 'Sora', sans-serif;
+    --button-background: #F51825;
+    --button-color: #ffffff;
+    --button-border-radius: 2px;
+    --error-color: #ff4444;
+    display: block;
+    color-scheme: dark;
+  }
+
   /* ── FOOTER ── */
   footer {
     background: #080808;
@@ -1143,51 +1172,9 @@
     <h2 class="section-title">Enter the <span class="red">Ring</span></h2>
     <p class="section-desc">Ready to make it official with a legendary entrance? Fill out the application below and let The Miz make it happen.</p>
 
-    <div class="form-placeholder">
-      <div class="fpo-banner">
-        <span>FOR PLACEMENT ONLY — FORM EMBED PENDING</span>
-      </div>
-
-      <div class="fpo-grid">
-        <div class="fpo-field half">
-          <label>First Name</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field half">
-          <label>Last Name</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field half">
-          <label>Date of Birth</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field half">
-          <label>Where Are You From?</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field full">
-          <label>Email Address</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field full">
-          <label>Phone Number</label>
-          <div class="fpo-input"></div>
-        </div>
-        <div class="fpo-field full">
-          <label>Tell us your love story <span class="fpo-optional">Optional</span></label>
-          <div class="fpo-input textarea"></div>
-        </div>
-        <div class="fpo-field full">
-          <div class="fpo-checkbox-row">
-            <div class="fpo-checkbox"></div>
-            <span class="fpo-checkbox-label">I have read and agree to the <span class="fpo-link">Terms and Conditions</span></span>
-          </div>
-        </div>
-      </div>
-
-      <div class="fpo-submit">
-        <div class="fpo-btn">Submit Application</div>
-      </div>
+    <div class="form-webcomponent-wrap">
+      <universal-form-webcomponent program_id="69cea152b1ad5c0d7715c3ac" env="test" case="submit"></universal-form-webcomponent>
+      <script async src="https://api.helloprobability.io/js/universal_form_webcomponent.js"></script>
     </div>
   </div>
 </section>
