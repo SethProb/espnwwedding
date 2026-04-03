@@ -1692,6 +1692,14 @@
       #btn-next:hover { background: #91080A !important; }
       canvas, component-fingerprint { display: none !important; }
 
+      /* Hide empty spacer elements the component injects between checkbox and button */
+      #myForm > br { display: none !important; height: 0 !important; }
+      #myForm > div:empty { display: none !important; height: 0 !important; }
+      #myForm > p:empty { display: none !important; height: 0 !important; }
+
+      /* Tighten button top margin */
+      #btn-next { margin-top: 4px !important; }
+
       /* Kill the 30px top margin on labels — this is the real padding culprit */
       .style-label, label.style-label { margin-top: 0 !important; }
 
