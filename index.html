@@ -1726,6 +1726,29 @@
     document.head.appendChild(style);
   };
   // Apply mobile single-column layout
+  const fixFormSpacing = () => {
+    // Force hide spacer elements
+    const form = document.querySelector('#myForm');
+    if (!form) return;
+    Array.from(form.children).forEach(el => {
+      if (el.tagName === 'BR' || (el.tagName === 'DIV' && el.getBoundingClientRect().height === 0) || (el.tagName === 'P' && el.getBoundingClientRect().height === 0)) {
+        el.style.setProperty('display', 'none', 'important');
+        el.style.setProperty('height', '0', 'important');
+        el.style.setProperty('margin', '0', 'important');
+        el.style.setProperty('padding', '0', 'important');
+      }
+    });
+    // Force label margin-top to 0
+    document.querySelectorAll('.style-label, label.style-label').forEach(el => {
+      el.style.setProperty('margin-top', '0', 'important');
+    });
+    // Force form gap
+    if (form) form.style.setProperty('row-gap', '4px', 'important');
+    // Tighten button
+    const btn = document.querySelector('#btn-next');
+    if (btn) btn.style.setProperty('margin-top', '4px', 'important');
+  };
+
   const applyMobileForm = () => {
     const form = document.querySelector('#myForm');
     if (!form) return;
@@ -1738,10 +1761,11 @@
   };
 
   // Run on load and after a delay to catch async component render
-  window.addEventListener('load', () => { injectFormStyles(); applyMobileForm(); });
+  window.addEventListener('load', () => { injectFormStyles(); applyMobileForm(); fixFormSpacing(); });
   window.addEventListener('resize', applyMobileForm);
-  setTimeout(() => { injectFormStyles(); applyMobileForm(); }, 500);
-  setTimeout(() => { injectFormStyles(); applyMobileForm(); }, 1500);
+  setTimeout(() => { injectFormStyles(); applyMobileForm(); fixFormSpacing(); }, 500);
+  setTimeout(() => { injectFormStyles(); applyMobileForm(); fixFormSpacing(); }, 1500);
+  setTimeout(fixFormSpacing, 3000);
 
   const nav = document.getElementById('header-nav');
 
